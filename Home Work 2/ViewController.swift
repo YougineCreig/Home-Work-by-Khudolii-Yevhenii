@@ -5,40 +5,41 @@
 //  Created by Yevhenii on 16.10.2020.
 //
 
-    import UIKit
-    class ViewController: UIViewController {
+import UIKit
+class ViewController: UIViewController {
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        stairs(value: 4)
+        
+        square(value: 10)
+        
     }
-    
-    func drawBox(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
+    func drawBox(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, color: UIColor) {
         let box = UIView()
-        box.backgroundColor = UIColor.blue
+        box.backgroundColor = color
         box.frame = CGRect (x: x, y: y, width: width, height: height)
         view.addSubview(box)
     }
     
-    func stairs (value: Int) {
+    func square (value: Int) {
         let padding: CGFloat = 20
-        var xPos: CGFloat = 300
+        var xPos: CGFloat = 50
         var yPos: CGFloat = 50
-        let boxSize: CGFloat = 50
-        var step = 1
+        var boxSize: CGFloat = 300
         var startPos: CGFloat = 300
-        for _ in 0..<value {
-            for _ in 0..<step {
-                drawBox(x: xPos, y: yPos, width: boxSize, height: boxSize)
-                xPos += padding + boxSize
-                
+        var color: UIColor = UIColor.blue
+        for i in 0..<value {
+            if i % 2 == 0 {
+                color = UIColor.blue
+            } else {
+                color = UIColor.red
             }
-            startPos -= (boxSize + padding)/2
+            boxSize -= padding
+            startPos += padding/2
             xPos = startPos
-            step += 1
-            yPos += padding + boxSize
+            yPos = startPos
+            drawBox(x: xPos, y: yPos, width: boxSize, height: boxSize, color: color)
         }
     }
 }
-
