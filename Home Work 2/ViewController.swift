@@ -34,10 +34,11 @@
                 xPos += padding + boxSize
                 
             }
-            startPos = 300
+            startPos -= (boxSize + padding)/2
             xPos = startPos
             step += 1
             yPos += padding + boxSize
         }
     }
 }
+
