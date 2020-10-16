@@ -5,15 +5,13 @@
 //  Created by Yevhenii on 16.10.2020.
 //
 
-import UIKit
-
-class ViewController: UIViewController {
-    
+    import UIKit
+    class ViewController: UIViewController {
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        
-        line(value: 3)
+        stairs(value: 4)
     }
     
     func drawBox(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
@@ -23,13 +21,23 @@ class ViewController: UIViewController {
         view.addSubview(box)
     }
     
-    func line (value: Int) {
+    func stairs (value: Int) {
         let padding: CGFloat = 20
-        var xPos: CGFloat = 50
+        var xPos: CGFloat = 300
+        var yPos: CGFloat = 50
         let boxSize: CGFloat = 50
+        var step = 1
+        var startPos: CGFloat = 300
         for _ in 0..<value {
-            drawBox(x: xPos, y: 50, width: 50, height: 50)
-            xPos += padding + boxSize
+            for _ in 0..<step {
+                drawBox(x: xPos, y: yPos, width: boxSize, height: boxSize)
+                xPos += padding + boxSize
+                
+            }
+            startPos = 300
+            xPos = startPos
+            step += 1
+            yPos += padding + boxSize
         }
     }
 }
